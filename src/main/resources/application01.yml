@@ -27,5 +27,5 @@ spring:
     props:
       sql:
         show: true
-  mian:
+  main:
     allow-bean-definition-overriding: true
