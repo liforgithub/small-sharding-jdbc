@@ -1,5 +1,6 @@
 package com.lxy;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.lxy.entity.Course;
 import com.lxy.mapper.CourseMapper;
@@ -31,7 +32,12 @@ class SmallShardingJdbcApplicationTests {
 
     @Test
     void queryCourse() {
-        List<Course> courses = courseMapper.selectList(new QueryWrapper<Course>().lambda().eq(Course::getCid, 680566112437407744L));
+
+        LambdaQueryWrapper<Course> eq = new QueryWrapper<Course>().lambda().eq(Course::getCid, 680772240077230080L);
+
+//        LambdaQueryWrapper<Course> eq = new QueryWrapper<Course>().lambda().between(Course::getCid, 680772240077230080L, 680772240878342145L);
+
+        List<Course> courses = courseMapper.selectList(eq);
         courses.forEach(System.out::println);
     }
 
